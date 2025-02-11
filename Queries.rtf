@@ -1,0 +1,406 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2820
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red167\green0\blue95;\red255\green255\blue255;\red24\green25\blue27;
+\red22\green79\blue199;\red0\green0\blue0;\red46\green49\blue51;\red24\green112\blue43;\red159\green77\blue4;
+}
+{\*\expandedcolortbl;;\cssrgb\c72157\c2353\c44706;\cssrgb\c100000\c100000\c100000;\cssrgb\c12549\c12941\c14118;
+\cssrgb\c9804\c40392\c82353;\cssrgb\c0\c0\c0;\cssrgb\c23529\c25098\c26275;\cssrgb\c9412\c50196\c21961;\cssrgb\c69020\c37647\c0;
+}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 --median houshold income and the count of counties below that\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 AverageMedianIncome\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \strokec4  \cf5 \strokec5 AVG\cf7 \strokec7 (\cf4 \strokec6 Median_Household_Income_2018\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 avg_median_income\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \strokec4  \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 a.avg_median_income\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 COUNT\cf7 \strokec7 (*)\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 num_counties_below_average\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 t\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 JOIN\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 AverageMedianIncome\strokec4  \strokec6 a\strokec4  \cf5 \strokec5 ON\cf4 \strokec4  \cf9 \strokec9 1\cf4 \strokec4 =\cf9 \strokec9 1\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 t.Median_Household_Income_2018\strokec4  \cf7 \strokec7 <\cf4 \strokec4  \strokec6 a.avg_median_income\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 a.avg_median_income\strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --median unemployment rate and count of counties above that\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 AverageUnemploymentRate\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \strokec4  \cf5 \strokec5 AVG\cf7 \strokec7 (\cf4 \strokec6 Unemployment_Rate_2018\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 avg_unemployment_rate\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \strokec4  \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 a.avg_unemployment_rate\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 COUNT\cf7 \strokec7 (*)\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 num_counties_above_average\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 t\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 JOIN\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 AverageUnemploymentRate\strokec4  \strokec6 a\strokec4  \cf5 \strokec5 ON\cf4 \strokec4  \cf9 \strokec9 1\cf4 \strokec4 =\cf9 \strokec9 1\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 t.Unemployment_Rate_2018\strokec4  \cf7 \strokec7 <\cf4 \strokec4  \strokec6 a.avg_unemployment_rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 a.avg_unemployment_rate\strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --County with the highest WhiteAlone rate and its mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 RankedCounties\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 d.state\strokec4 ,\cb1 \
+\cb3         \strokec6 d.county\strokec4 ,\cb1 \
+\cb3         \strokec6 d.WhiteAlone\strokec4 ,\cb1 \
+\cb3         \strokec6 p.Mortality_Rate\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.WhiteAlone\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 white_rank\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3         \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 state\strokec4 ,\cb1 \
+\cb3     \strokec6 county\strokec4 ,\cb1 \
+\cb3     \strokec6 WhiteAlone\strokec4 ,\cb1 \
+\cb3     \strokec6 Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 RankedCounties\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 white_rank\strokec4  = \cf9 \strokec9 1\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --County with the highest BlackAlone rate and its mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 RankedCounties\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 d.state\strokec4 ,\cb1 \
+\cb3         \strokec6 d.county\strokec4 ,\cb1 \
+\cb3         \strokec6 d.BlackAlone\strokec4 ,\cb1 \
+\cb3         \strokec6 p.Mortality_Rate\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.BlackAlone\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 black_rank\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3         \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 state\strokec4 ,\cb1 \
+\cb3     \strokec6 county\strokec4 ,\cb1 \
+\cb3     \strokec6 BlackAlone\strokec4 ,\cb1 \
+\cb3     \strokec6 Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 RankedCounties\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 black_rank\strokec4  = \cf9 \strokec9 1\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 order\cf4 \strokec4  \cf5 \strokec5 by\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 BlackAlone\strokec4  \cf5 \strokec5 DESC\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --County with the highest NativeAmericanAlone rate and its mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 RankedCounties\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 d.state\strokec4 ,\cb1 \
+\cb3         \strokec6 d.county\strokec4 ,\cb1 \
+\cb3         \strokec6 d.NativeAmericanAlone\strokec4 ,\cb1 \
+\cb3         \strokec6 p.Mortality_Rate\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.NativeAmericanAlone\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 NativeAmerican_rank\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3         \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 state\strokec4 ,\cb1 \
+\cb3     \strokec6 county\strokec4 ,\cb1 \
+\cb3     \strokec6 NativeAmericanAlone\strokec4 ,\cb1 \
+\cb3     \strokec6 Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 RankedCounties\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 NativeAmerican_rank\strokec4  = \cf9 \strokec9 1\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --County with the highest AsianAlone rate and its mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 RankedCounties\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 d.state\strokec4 ,\cb1 \
+\cb3         \strokec6 d.county\strokec4 ,\cb1 \
+\cb3         \strokec6 d.AsianAlone\strokec4 ,\cb1 \
+\cb3         \strokec6 p.Mortality_Rate\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.AsianAlone\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Asian_rank\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3         \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 state\strokec4 ,\cb1 \
+\cb3     \strokec6 county\strokec4 ,\cb1 \
+\cb3     \strokec6 AsianAlone\strokec4 ,\cb1 \
+\cb3     \strokec6 Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 RankedCounties\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 Asian_rank\strokec4  = \cf9 \strokec9 1\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --County with the highest Hispanic rate and its mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 RankedCounties\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 d.state\strokec4 ,\cb1 \
+\cb3         \strokec6 d.county\strokec4 ,\cb1 \
+\cb3         \strokec6 d.Hispanic\strokec4 ,\cb1 \
+\cb3         \strokec6 p.Mortality_Rate\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 d.Hispanic\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Hispanic_rank\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3         \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 state\strokec4 ,\cb1 \
+\cb3     \strokec6 county\strokec4 ,\cb1 \
+\cb3     \strokec6 Hispanic\strokec4 ,\cb1 \
+\cb3     \strokec6 Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 RankedCounties\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 Hispanic_rank\strokec4  = \cf9 \strokec9 1\cf4 \strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --Each states racial average demographics and mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 d.state\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.WhiteAlone\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Total_WhiteAlone\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.BlackAlone\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Total_BlackAlone\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.NativeAmericanAlone\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Total_NativeAmericanAlone\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.AsianAlone\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Total_AsianAlone\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.Hispanic\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Total_Hispanic\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 AVG\cf7 \strokec7 (\cf4 \strokec6 p.Mortality_Rate\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Avg_Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 d.state\strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --Each state and average whites and average of minorities with average mortality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 d.state\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.WhiteAlone\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Avg_Whites\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 avg\cf7 \strokec7 (\cf4 \strokec6 d.BlackAlone\strokec4  \cf7 \strokec7 +\cf4 \strokec4  \strokec6 d.NativeAmericanAlone\strokec4  \cf7 \strokec7 +\cf4 \strokec4  \strokec6 d.AsianAlone\strokec4  \cf7 \strokec7 +\cf4 \strokec4  \strokec6 d.Hispanic\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Avg_Minorities\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 AVG\cf7 \strokec7 (\cf4 \strokec6 p.Mortality_Rate\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 Avg_Mortality_Rate\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.demographics`\cf4 \strokec4  \strokec6 d\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 d.county\strokec4  = \strokec6 p.County\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 d.state\strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --average median income by state and then shows the number of counties in those states that are below median\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 StateAvgIncome\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \strokec4  \cb1 \
+\cb3         \strokec6 State\strokec4 , \cb1 \
+\cb3         \cf5 \strokec5 AVG\cf7 \strokec7 (\cf4 \strokec6 Median_Household_Income_2018\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 avg_state_income\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \strokec4  \cb1 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \cb1 \strokec4 \
+\cb3     \cf5 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \cb1 \
+\cb3         \strokec6 State\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 s.state\strokec4 ,\cb1 \
+\cb3     \strokec6 s.avg_state_income\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 COUNT\cf7 \strokec7 (\cf4 \strokec6 p.Median_Household_Income_2018\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 num_counties_below_avg\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4  \strokec6 p\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 StateAvgIncome\strokec4  \strokec6 s\strokec4  \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 p.state\strokec4  = \strokec6 s.state\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 p.Median_Household_Income_2018\strokec4  \cf7 \strokec7 <\cf4 \strokec4  \strokec6 s.avg_state_income\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 s.State\strokec4 ,\cb1 \
+\cb3     \strokec6 s.avg_state_income\strokec4 ;\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --States with average poverty rate and count of counties that are above that with the hightst motality rate\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WITH\cf4 \strokec4  \strokec6 StateAvgPoverty\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 state\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 AVG\cf7 \strokec7 (\cf4 \strokec6 Poverty_2018\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 avg_state_poverty\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \cb1 \strokec4 \
+\cb3     \cf5 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 state\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \strokec4 ,\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3 \strokec6 RankedCounties\strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \cf7 \strokec7 (\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\cb3         \strokec6 state\strokec4 ,\cb1 \
+\cb3         \strokec6 county\strokec4 ,\cb1 \
+\cb3         \strokec6 Poverty_2018\strokec4 ,\cb1 \
+\cb3         \strokec6 Mortality_Rate\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 Mortality_Rate\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 mortality_rank\strokec4 ,\cb1 \
+\cb3         \cf5 \strokec5 ROW_NUMBER\cf7 \strokec7 ()\cf4 \strokec4  \cf5 \strokec5 OVER\cf4 \strokec4  \cf7 \strokec7 (\cf5 \strokec5 PARTITION\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 state\strokec4  \cf5 \strokec5 ORDER\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \strokec4  \strokec6 Poverty_2018\strokec4  \cf5 \strokec5 DESC\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 poverty_rank\cb1 \strokec4 \
+\cb3     \cf5 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\cb3         \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 )\cf4 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 s.state\strokec4 ,\cb1 \
+\cb3     \strokec6 s.avg_state_poverty\strokec4 ,\cb1 \
+\cb3     \cf5 \strokec5 COUNT\cf7 \strokec7 (\cf4 \strokec6 r.county\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 counties_with_highest_poverty_and_mortality\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 StateAvgPoverty\strokec4  \strokec6 s\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 JOIN\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 RankedCounties\strokec4  \strokec6 r\strokec4  \cf5 \strokec5 ON\cf4 \strokec4  \strokec6 s.state\strokec4  = \strokec6 r.state\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 WHERE\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 r.mortality_rank\strokec4  = \cf9 \strokec9 1\cf4 \strokec4  \cf5 \strokec5 AND\cf4 \strokec4  \strokec6 r.poverty_rank\strokec4  = \cf9 \strokec9 1\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 GROUP\cf4 \strokec4  \cf5 \strokec5 BY\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \strokec6 s.state\strokec4 ,\cb1 \
+\cb3     \strokec6 s.avg_state_poverty\strokec4 ;\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 --Correlation coefficient\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 SELECT\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf5 \strokec5 CORR\cf7 \strokec7 (\cf4 \strokec6 Poverty_2018\strokec4 , \strokec6 Mortality_Rate\cf7 \strokec7 )\cf4 \strokec4  \cf5 \strokec5 AS\cf4 \strokec4  \strokec6 correlation_coefficient\cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 FROM\cf4 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf4 \cb3     \cf8 \strokec8 `covid-19-project-450418.Covid19_Tables.population`\cf4 \strokec4 ;\cb1 \
+}
